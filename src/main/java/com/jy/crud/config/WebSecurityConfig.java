@@ -1,6 +1,6 @@
 package com.jy.crud.config;
 
-import com.jy.jobweb.security.JwtAuthenticationFilter;
+import com.jy.crud.security.JwtAuthenticationFilter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
