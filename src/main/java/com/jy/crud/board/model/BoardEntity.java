@@ -1,18 +1,16 @@
 package com.jy.crud.board.model;
 
-import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
 @Builder
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Table(name = "board")
 public class BoardEntity {
@@ -30,11 +28,21 @@ public class BoardEntity {
     @Column(nullable = false)
     private String writer;
 
+    // 삭제여부
+    private String delYn;
+
     // 생성일
-    @Column(nullable = false)
-    private Date registDate;
+    @CreatedDate
+    private LocalDateTime createdDate;
 
     // 수정일
-    @Column(nullable = false)
-    private Date modifyDate;
+    @LastModifiedDate
+    private LocalDateTime modifiedDate;
+
+    @Builder
+    public BoardEntity(String title, String content, String writer){
+        this.title = title;
+        this.content = content;
+        this.writer = writer;
+    }
 }
